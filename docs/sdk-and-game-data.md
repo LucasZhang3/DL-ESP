@@ -53,7 +53,7 @@ Failure of any interface → SDK load returns `false` → init thread aborts.
 
 ## Function list (pattern-scanned)
 
-**Init:** `CFunctionList::OnInit()` — all patterns must search successfully.
+**Init:** `CFunctionList::OnInit()` - all patterns must search successfully.
 
 | Pattern member | Typical use in project |
 |----------------|------------------------|
@@ -88,9 +88,9 @@ Generates inline wrappers calling the resolved original.
 2. Walk class containers / schema blocks
 3. Optional dumps when `DUMP_SCHEMA_SCOPE_LIST` or `DUMP_SCHEMA_ALL_OFFSET` == 1
 
-Entity field access in headers (e.g. `CEntityData.hpp`) uses schema-derived offsets — **exact macro style not duplicated here**; see generated/ hand-maintained types under `DeadLock/SDK/Types/`.
+Entity field access in headers (e.g. `CEntityData.hpp`) uses schema-derived offsets - **exact macro style not duplicated here**; see generated/ hand-maintained types under `DeadLock/SDK/Types/`.
 
-**Repo root:** `schema_dump.hpp` may contain supplemental dump output — verify freshness vs your game build before relying on it.
+**Repo root:** `schema_dump.hpp` may contain supplemental dump output - verify freshness vs your game build before relying on it.
 
 ---
 
@@ -120,16 +120,16 @@ Base type from SDK headers. Methods used in project:
 
 ### `CCitadelPlayerController`
 
-- `m_hHeroPawn()` — handle to pawn
-- `m_PlayerDataGlobal()` — alive state, hero ID, **current/max health** (`m_iHealth`, `m_iHealthMax`)
+- `m_hHeroPawn()` - handle to pawn
+- `m_PlayerDataGlobal()` - alive state, hero ID, **current/max health** (`m_iHealth`, `m_iHealthMax`)
 - Team number via `m_iTeamNum()`
 
 ### `C_CitadelPlayerPawn`
 
-- `m_vOldOrigin()` — feet/world origin for ESP box
+- `m_vOldOrigin()` - feet/world origin for ESP box
 - Bone queries for `"head"` and skeleton pairs
 
-### Handles — `CHandle`
+### Handles - `CHandle`
 
 Template handle type with `.Get<T>()` resolving through entity system. Cache stores handles and validates each frame against `pEntityIdentity()->Handle()`.
 
@@ -154,7 +154,7 @@ for (auto idx = 0; idx <= GameEntitySystem()->GetHighestEntityIndex(); idx++)
 
 **Field:** `m_PlayerDataGlobal().m_nHeroID().m_Value` (uint32)
 
-**Lookup:** `HeroIdLookup::g_HeroIdNameTable` — 38 entries, sorted, binary search.
+**Lookup:** `HeroIdLookup::g_HeroIdNameTable` - 38 entries, sorted, binary search.
 
 **Fallback:** Numeric string when ID unknown (documented in `CHeroIdLookup.hpp`).
 
@@ -172,7 +172,7 @@ for (auto idx = 0; idx <= GameEntitySystem()->GetHighestEntityIndex(); idx++)
 | `g_OFFSET_CGameEntitySystem_GetHighestEntityIndex` | `0x20A0` | Commented reference |
 | `g_CCollisionProperty_UnknownMask` | `0x38` | Commented reference |
 
-These are **not** auto-updated — game patches can break footstep ESP silently.
+These are **not** auto-updated - game patches can break footstep ESP silently.
 
 ---
 
@@ -215,7 +215,7 @@ Failure in `SDL3_Functions::OnInit()` fails entire SDK load.
 
 Enable in `Config.hpp` (`RELEASE_BUILD`):
 
-- `LOG_SDK` — interface/pointer addresses logged
-- `DUMP_SCHEMA_SCOPE_LIST` / `DUMP_SCHEMA_ALL_OFFSET` — schema dump to log
+- `LOG_SDK` - interface/pointer addresses logged
+- `DUMP_SCHEMA_SCOPE_LIST` / `DUMP_SCHEMA_ALL_OFFSET` - schema dump to log
 
 Requires `ENABLE_CONSOLE_DEBUG` and working `DevLog` output to `debug.log` or console.
