@@ -186,55 +186,7 @@ All installed in `CHook_Loader::InstallSecondHook` via pattern scan + MinHook.
 
 ---
 
-## 7. Screenshots & visuals
-
-Existing marketing image is embedded at the top of this README.
-
-### Placeholders (capture locally after build)
-
-| Slot | Suggested capture |
-|------|-------------------|
-| **Menu overview** | Full window with left config list + right tabs |
-| **Visual tab** | All ESP toggles visible |
-| **Misc tab** | Menu style combo + alpha slider |
-| **Config tab** | Load/Save/Create buttons |
-| **ESP example** | In-match with Enemy ESP + boxes |
-| **Bones ESP** | Skeleton overlay on players |
-| **Footstep ESP** | Yellow shrinking circles on ground |
-| **Hero labels** | `Show Hero Name` enabled |
-| **Health ESP** | `Show Health` / `Show Health Bar` on enemies and teammates |
-
-Replace placeholders by adding images under `docs/images/` and linking them here.
-
----
-
-## 8. Technical debt & fragile areas
-
-| Area | Risk | Notes |
-|------|------|-------|
-| Pattern signatures | **High** | Every game update can break `CBasePattern` / hook scans |
-| Schema offsets | **High** | `CSchemaOffset` + generated entity headers must match build |
-| `Offsets.hpp` constants | **High** | Hardcoded protobuf/layout offsets in `Hook_ParseMessage` |
-| `Hook_GetMatricesForView` | Low | Hook installed but only forwards to original |
-| `CDeadlockClient::OnCreateMove` | N/A | Stub - no aim/move features |
-| `Settings::Colors::Visual::SoundStepEsp` | Medium | Saved/loaded but not applied in `CVisual::OnRenderSound` |
-| Hero ID table | Medium | Partial static table; unknown IDs show numeric fallback |
-| Overlay Present hook | Medium | Depends on Steam overlay DXGI path |
-| `gui.ini` child IDs | Low | Renamed from `Andromeda*` → `Deadlock*`; old layouts may reset |
-
----
-
-## 9. Undocumented / uncertain from code alone
-
-- Exact **injector** and whether **manual map** (`ManualMapParam_t`) is always used
-- Full list of **protobuf** message handlers beyond `GE_SosStartSoundEvent`
-- Whether **VMProtect** / **XorStr** macros are enabled in your local build (`ENABLE_XOR_STR` = 0 in `Config.hpp` for `RELEASE_BUILD`)
-- **Win32** project configuration include paths (only x64 sets `IncludePath` explicitly in vcxproj)
-- Complete **schema dump** output (gated by `DUMP_SCHEMA_*` flags, default off)
-
----
-
-## 10. Quick reference - key singletons
+## 7. Quick reference 
 
 | Accessor | Type | Role |
 |----------|------|------|
