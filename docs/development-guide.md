@@ -6,10 +6,10 @@
 
 ### Recommended reading order
 
-1. [execution-flow.md](execution-flow.md) — when code runs
-2. [architecture.md](architecture.md) — how modules connect
-3. [esp.md](esp.md) or [gui.md](gui.md) — depending on your task
-4. [sdk-and-game-data.md](sdk-and-game-data.md) — game-facing changes
+1. [execution-flow.md](execution-flow.md) - when code runs
+2. [architecture.md](architecture.md) - how modules connect
+3. [esp.md](esp.md) or [gui.md](gui.md) - depending on your task
+4. [sdk-and-game-data.md](sdk-and-game-data.md) - game-facing changes
 
 ### Open in IDE
 
@@ -36,7 +36,7 @@
 - **Character set:** MultiByte (x64 Release)
 - **Preprocessor:** `RELEASE_BUILD`, `DEADLOCK_EXPORTS`, `NDEBUG`
 
-Do not rely on this doc for exact VS version — see `Deadlock.vcxproj`.
+Do not rely on this doc for exact VS version - see `Deadlock.vcxproj`.
 
 **Libraries** (project directory): `freetype.lib`, `FW1FontWrapperRel.lib`, `libprotobuf.lib`, `steam_api64.lib`, `VMProtectSDK64.lib`.
 
@@ -52,10 +52,10 @@ Do not rely on this doc for exact VS version — see `Deadlock.vcxproj`.
 4. In `CVisual::OnClientOutput` or `OnRender`:
    - Read setting
    - Resolve entities (cache or `FOR_EACH_ENTITY`)
-   - Call `GetRenderStackSystem()->Draw*` — **do not** call ImGui draw directly from engine hook
+   - Call `GetRenderStackSystem()->Draw*` - **do not** call ImGui draw directly from engine hook
 5. Test with menu closed and open
 
-**Reference implementation:** health ESP — `ShowHealth` / `ShowHealthBar` in `Settings.hpp`, JSON in `CSettingsJson.cpp`, menu in `CDeadlockMenu.cpp`, drawing in `CVisual::OnRenderPlayerEsp()` using `m_PlayerDataGlobal().m_iHealth()` / `m_iHealthMax()`.
+**Reference implementation:** health ESP - `ShowHealth` / `ShowHealthBar` in `Settings.hpp`, JSON in `CSettingsJson.cpp`, menu in `CDeadlockMenu.cpp`, drawing in `CVisual::OnRenderPlayerEsp()` using `m_PlayerDataGlobal().m_iHealth()` / `m_iHealthMax()`.
 
 ### Render stack contract
 
@@ -78,9 +78,9 @@ Do not rely on this doc for exact VS version — see `Deadlock.vcxproj`.
 1. Create `Hook_YourFeature.hpp/.cpp` with detour + `*_o` original
 2. Add pattern entry to `CHook_Loader::InstallSecondHook` vector
 3. Document DLL name and failure mode (`m_bSkipIfNotFound` if optional)
-4. Keep detour minimal — delegate to singleton
+4. Keep detour minimal - delegate to singleton
 
-**Danger:** Installing hooks after game threads call targets requires ordering — all hooks install once in init thread before return.
+**Danger:** Installing hooks after game threads call targets requires ordering - all hooks install once in init thread before return.
 
 ---
 
@@ -100,18 +100,18 @@ Do not rely on this doc for exact VS version — see `Deadlock.vcxproj`.
 ## Rendering cautions
 
 - Use **background draw list** via `CRender` for ESP (world-aligned 2D overlay)
-- `WorldToScreen` requires valid ImGui frame (`DisplaySize`) — fails outside Present path
+- `WorldToScreen` requires valid ImGui frame (`DisplaySize`) - fails outside Present path
 - `DrawCircle3D` still projects through game's view; extreme angles may clip oddly
-- FW1 `DrawString` uses D3D11 device from GUI — fonts init on first `OnRender`
+- FW1 `DrawString` uses D3D11 device from GUI - fonts init on first `OnRender`
 
 ---
 
 ## Hook cautions
 
-- Overlay Present may differ from borderless/fullscreen swap chains — test both
-- `ResizeBuffers` destroys GUI — expect full re-init on display mode change
-- `MH_EnableHook(MH_ALL_HOOKS)` enables everything at once — partial enable not used
-- `CreateMove` runs in prediction context — heavy work causes frame time spikes
+- Overlay Present may differ from borderless/fullscreen swap chains - test both
+- `ResizeBuffers` destroys GUI - expect full re-init on display mode change
+- `MH_EnableHook(MH_ALL_HOOKS)` enables everything at once - partial enable not used
+- `CreateMove` runs in prediction context - heavy work causes frame time spikes
 
 ---
 
@@ -119,7 +119,7 @@ Do not rely on this doc for exact VS version — see `Deadlock.vcxproj`.
 
 - Always clamp user-facing ints in `GetIntJson`
 - Stamp file must stay basename-only (security check in `ReadLastLoadedConfigStamp`)
-- `SaveConfig` overwrites entire JSON — no merge with unknown keys from older files (keys not in save path are dropped on round-trip)
+- `SaveConfig` overwrites entire JSON - no merge with unknown keys from older files (keys not in save path are dropped on round-trip)
 
 ---
 
@@ -128,7 +128,7 @@ Do not rely on this doc for exact VS version — see `Deadlock.vcxproj`.
 - [ ] DLL loads; `debug.log` shows init success (if logging on)
 - [ ] Insert opens menu; game input suppressed appropriately
 - [ ] Load/Save/Create/Delete config
-- [ ] Restart DLL — `last_loaded_config.txt` restores settings
+- [ ] Restart DLL - `last_loaded_config.txt` restores settings
 - [ ] ESP toggles with local player never boxed
 - [ ] Health text/bar update when damage is dealt (enemy + teammate)
 - [ ] Enemy-only footsteps do not show teammates
@@ -152,8 +152,8 @@ Match surrounding files when contributing.
 ## Git / hygiene
 
 - Do not commit `x64/Release/`, `.vs/`, `debug.log`, `gui.ini`, personal `*.json` if they contain secrets
-- Protobuf `.pb.cc` files are bulky — avoid drive-by formatting
-- `FontAwesomeIcon.hpp` is generated-scale — do not hand-edit icon constants
+- Protobuf `.pb.cc` files are bulky - avoid drive-by formatting
+- `FontAwesomeIcon.hpp` is generated-scale - do not hand-edit icon constants
 
 ---
 
