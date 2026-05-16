@@ -12,7 +12,7 @@ DLL_PROCESS_ATTACH
   → CDllLauncher::OnDllMain(lpReserved, hInstance)
 ```
 
-**File:** `DeadlockMod/DllLauncher.cpp` — `OnDllMain`
+**File:** `DeadlockMod/DllLauncher.cpp` - `OnDllMain`
 
 1. Resolve **DLL directory** `m_DllDir`:
    - If `lpReserved` → cast to `ManualMapParam_t*`, use `m_DllDir` (strip to folder)
@@ -31,8 +31,8 @@ No heavy work runs on the loader thread beyond spawning init.
 
 | Step | Component | Failure behavior |
 |------|-----------|------------------|
-| 1 | `GetDevLog()->Init()` | — |
-| 2 | `GetCrashLog()->InitVectorExceptionHandler()` | — |
+| 1 | `GetDevLog()->Init()` | - |
+| 2 | `GetCrashLog()->InitVectorExceptionHandler()` | - |
 | 3 | `GetHook_Loader()->InitalizeMH()` | Log error, **thread returns 0** |
 | 4 | `GetFunctionList()->OnInit()` | Pattern scan all game functions |
 | 5 | `GetSDK_Loader()->LoadSDK()` | Wait `navsystem.dll`, interfaces, SDL3, schema |
@@ -82,7 +82,7 @@ Subsequent Present calls → `OnRender`.
 1. If menu visible → `CDeadlockMenu::OnRenderMenu()`
 2. `CFontManager::FirstInitFonts()` (FW1 font wrapper)
 3. Draw cheat name top-left (`CHEAT_NAME` from Config.hpp)
-4. **`CRenderStackSystem::OnRenderStack()`** — flush queued ESP primitives
+4. **`CRenderStackSystem::OnRenderStack()`** - flush queued ESP primitives
 
 ---
 
@@ -103,7 +103,7 @@ return OnClientOutput_o(...);
 **`CVisual::OnClientOutput`**
 
 1. `EnsureUpdateCapacity(768)`
-2. `OnRender()` — player box ESP from entity cache
+2. `OnRender()` - player box ESP from entity cache
 3. If `BonesEsp` → `FOR_EACH_ENTITY` scan controllers, skeleton lines
 
 **`CRenderStackSystem::OnClientOutput`**
