@@ -14,7 +14,7 @@ The menu is **Dear ImGui** rendered with **Direct3D 11** on the game's swap chai
 | ImGui ini persistence | `gui.ini` in DLL directory |
 | Theme implementations | `CDeadlockGUI::Init*Style()` |
 
-**Toggle:** `Insert` key (keyup) — `GUI_WndProc` → `OnReopenGUI()`.
+**Toggle:** `Insert` key (keyup) - `GUI_WndProc` → `OnReopenGUI()`.
 
 ---
 
@@ -40,17 +40,17 @@ Constants (`CDeadlockMenu.hpp`):
 | `g_ChildSizeX` | 150 | Left panel width |
 | `g_ButtonSizeY` | 30 | Icon button height |
 
-### Left child — `RenderLeftChild()`
+### Left child - `RenderLeftChild()`
 
 - Child ID: `"DeadlockChildLeft"`
 - Lists all `*.json` configs from `CSettingsJson::GetConfigList()`
 - Button per file; click sets `m_nConfigSelected`
 - Color labels:
-  - **Green** — loaded and selected
-  - **Green "Loaded"** — active config
-  - **Orange "Selected"** — selected but not loaded
+  - **Green** - loaded and selected
+  - **Green "Loaded"** - active config
+  - **Orange "Selected"** - selected but not loaded
 
-### Right child — `RenderRightChild()`
+### Right child - `RenderRightChild()`
 
 - Child ID: `"DeadlockChildRight"`
 - `ImGui::BeginTabBar("##MainSettingsTabBar")` with three tabs
@@ -91,7 +91,7 @@ Uses Font Awesome icons via `ButtonIcon()` (icon font + text button).
 | Footstep ESP | `Settings::Visual::SoundStepEsp` | bool |
 | Bones ESP | `Settings::Visual::BonesEsp` | bool |
 
-All use `RenderCheckBox()` — label left, checkbox right-aligned.
+All use `RenderCheckBox()` - label left, checkbox right-aligned.
 
 **Note:** Sub-features require `Active` for box ESP; bones/footsteps have additional gates in code (see [esp.md](esp.md)).
 
@@ -210,7 +210,7 @@ Menu style / alpha are persisted under `Settings.Misc` in JSON.
 
 - **File:** `GetDllDir() + "gui.ini"`
 - Stores window positions/sizes for ImGui windows
-- Child IDs renamed to `Deadlock*` — old `Andromeda*` ini sections will not match (layouts reset once)
+- Child IDs renamed to `Deadlock*` - old `Andromeda*` ini sections will not match (layouts reset once)
 
 ---
 
@@ -218,16 +218,16 @@ Menu style / alpha are persisted under `Settings.Misc` in JSON.
 
 Add captures under `docs/images/`:
 
-1. `menu-overview.png` — full 500×400 window
-2. `tab-config.png` — Config tab actions
-3. `tab-visual.png` — ESP toggles
-4. `tab-misc.png` — Style + alpha
+1. `menu-overview.png` - full 500×400 window
+2. `tab-config.png` - Config tab actions
+3. `tab-visual.png` - ESP toggles
+4. `tab-misc.png` - Style + alpha
 
 ---
 
 ## Known limitations
 
-- `CDeadlockClient::OnFireEventClientSide` is empty — no game-event-driven UI
+- `CDeadlockClient::OnFireEventClientSide` is empty - no game-event-driven UI
 - No in-menu color picker for ESP colors despite JSON color support
 - Menu does not render when `m_bVisible` false, but watermark + ESP still draw
-- Resize buffers destroys entire GUI — user may see brief flicker on resolution change
+- Resize buffers destroys entire GUI - user may see brief flicker on resolution change
