@@ -1,7 +1,4 @@
 # Screenshot placeholders
-
-Add local captures here and link from [README.md](../../README.md) / feature docs.
-
 | Screenshot | Description |
 |---|---|
 | ![Full menu](https://github.com/user-attachments/assets/259308ed-adab-4684-8563-39db1cfab3b4) | Full menu (500×400) |
