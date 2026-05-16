@@ -49,7 +49,7 @@ Settings: `DeadlockClient/Settings/Settings.hpp`
 
 ## Entity iteration (box ESP)
 
-**Source:** `CEntityCache::GetCachedEntity()` — vector populated by add/remove entity hooks.
+**Source:** `CEntityCache::GetCachedEntity()` - vector populated by add/remove entity hooks.
 
 **Loop** (`CVisual::OnRender`):
 
@@ -139,7 +139,7 @@ Behavior in `OnRenderPlayerEsp()`:
 
 **When:** `Settings::Visual::BonesEsp` in `OnClientOutput` (not gated by `Active`).
 
-**Iteration:** `FOR_EACH_ENTITY(idx)` macro in `CGameEntitySystem.hpp` — scans all entity indices.
+**Iteration:** `FOR_EACH_ENTITY(idx)` macro in `CGameEntitySystem.hpp` - scans all entity indices.
 
 **Filters:**
 
@@ -149,7 +149,7 @@ Behavior in `OnRenderPlayerEsp()`:
 - `m_bAlive()`
 - Valid citadel player pawn
 
-**Skeleton:** `g_AllSkeletonPairBones` in `CL_Bones.cpp` — 24 bone name pairs (spine, arms, legs).
+**Skeleton:** `g_AllSkeletonPairBones` in `CL_Bones.cpp` - 24 bone name pairs (spine, arms, legs).
 
 For each pair:
 
@@ -163,13 +163,13 @@ For each pair:
 
 ## Footstep ESP (sound)
 
-### Collection — `OnStartSound`
+### Collection - `OnStartSound`
 
 **Trigger:** `Hook_ParseMessage` for `GE_SosStartSoundEvent`.
 
 **Filters:**
 
-1. `Settings::Visual::EnemyEsp` must be true (checked at start — **not** `SoundStepEsp`)
+1. `Settings::Visual::EnemyEsp` must be true (checked at start - **not** `SoundStepEsp`)
 2. Sound name substring `"Footstep"`
 3. Source entity not local pawn
 4. Source team != local team
@@ -177,14 +177,14 @@ For each pair:
 
 Stores `SoundData_t { GetTickCount64(), Pos }` in `m_SoundList`.
 
-### Rendering — `OnRenderSound`
+### Rendering - `OnRenderSound`
 
 Called from `OnRender()` when `SoundStepEsp` true.
 
 - Remove entries older than `g_SoundShowTime` (1000 ms)
 - If `!EnemyEsp`, clear list and return
 - For each sound: `WorldToScreen`, `DrawCircle3D` with:
-  - Color: **fixed** `ImColor(1,1,0,Alpha)` — **not** `Settings::Colors::Visual::SoundStepEsp`
+  - Color: **fixed** `ImColor(1,1,0,Alpha)` - **not** `Settings::Colors::Visual::SoundStepEsp`
   - Radius lerps 20 → 0 over lifetime
 
 ---
@@ -226,7 +226,7 @@ Within one frame:
 1. **Enqueue** (OnClientOutput): all ESP commands pushed to `m_vecUpdateBuffer`
 2. **Publish:** buffer swapped to shared ptr
 3. **Present / OnRender:** menu ImGui widgets drawn first in `NewFrame`…`EndFrame`
-4. **OnRenderStack:** ESP draw lists executed (background draw list — typically on top of game, under ImGui windows depending on order)
+4. **OnRenderStack:** ESP draw lists executed (background draw list - typically on top of game, under ImGui windows depending on order)
 
 Watermark (`CHEAT_NAME`) drawn via FW1 in `OnRender` **before** `OnRenderStack`.
 
@@ -240,7 +240,7 @@ Exact Z-order vs game world is determined by overlay RTV binding, not depth-test
 
 - Static sorted table of 38 hero IDs → names
 - Binary search `TryLookupHeroName`
-- `FormatEnemyHeroEspLabel` — unknown IDs formatted as numeric string (see header comment)
+- `FormatEnemyHeroEspLabel` - unknown IDs formatted as numeric string (see header comment)
 
 **Limitation:** Table is manually maintained; new heroes show numbers until table update.
 
@@ -271,8 +271,8 @@ Exact Z-order vs game world is determined by overlay RTV binding, not depth-test
 
 ## Uncertainties / gaps
 
-- `CachedEntity_t::m_bVisible` is never set in code — no visibility check for ESP
+- `CachedEntity_t::m_bVisible` is never set in code - no visibility check for ESP
 - Commented-out hitbox/bone dump blocks in `CVisual.cpp` are debug-only, not features
 - Pawn-type cache entries are stored but **not** rendered in `OnRender` switch (only controller case)
-- **Enemy/teammate HP replication** not verified statically — confirm in-game that values update on damage/heal
+- **Enemy/teammate HP replication** not verified statically - confirm in-game that values update on damage/heal
 - Health display requires **Player ESP** box path (`Active` + team/enemy flags); not shown in bones-only mode without boxes
