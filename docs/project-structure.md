@@ -18,7 +18,7 @@ DL Source/
 
 ---
 
-## `DeadlockMod/` — source root
+## `DeadlockMod/` - source root
 
 | Path | Purpose |
 |------|---------|
@@ -52,7 +52,7 @@ DL Source/
 | `Include/XorStr/` | Compile-time string obfuscation (optional) |
 | `Include/stb/`, `lodepng/`, `google/protobuf/`, etc. | Vendored deps |
 
-**Key file:** `Config.hpp` — changing `CHEAT_NAME`, `CONFIG_FILE`, or log flags affects entire project.
+**Key file:** `Config.hpp` - changing `CHEAT_NAME`, `CONFIG_FILE`, or log flags affects entire project.
 
 ---
 
@@ -161,7 +161,7 @@ Defines `IRenderObject` hierarchy: line, box, coal box, circle 3D, string, etc.
 
 ## Visual Studio filters
 
-`Deadlock.vcxproj.filters` mirrors folder structure under virtual filters `DeadlockMod\...` for Solution Explorer — no impact on compile.
+`Deadlock.vcxproj.filters` mirrors folder structure under virtual filters `DeadlockMod\...` for Solution Explorer - no impact on compile.
 
 ---
 
