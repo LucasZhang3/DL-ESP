@@ -17,7 +17,7 @@
 | Active file tracking | `CSettingsJson::m_nConfigLoadedIndex` + `last_loaded_config.txt` |
 | Discovery | `std::filesystem::directory_iterator` for `*.json` |
 
-There is no encryption, cloud sync, or per-user roaming path — everything is local to `GetDllDir()`.
+There is no encryption, cloud sync, or per-user roaming path - everything is local to `GetDllDir()`.
 
 ---
 
@@ -68,7 +68,7 @@ Root object with single key `"Settings"`:
 |---------|------|-------|
 | Visual | `Active`, `SoundStepEsp`, `BonesEsp`, `EnemyEsp`, `TeamEsp` | bool |
 | Visual | `ShowHeroName` | Preferred key |
-| Visual | `ShowHeroId` | **Legacy alias** — used if `ShowHeroName` absent |
+| Visual | `ShowHeroId` | **Legacy alias** - used if `ShowHeroName` absent |
 | Visual | `ShowHealth`, `ShowHealthBar` | bool |
 | Misc | `MenuAlpha` | clamped 100–255 |
 | Misc | `MenuStyle` | clamped 0–3 |
@@ -110,7 +110,7 @@ Clears `m_vecConfigList`, enumerates `GetDllDir()` for regular files with `.json
 
 ### `DeleteConfig`
 
-`DeleteFileA` on `GetDllDir() + JsonFile` — does not clear stamp if deleted file was active.
+`DeleteFileA` on `GetDllDir() + JsonFile` - does not clear stamp if deleted file was active.
 
 ---
 
@@ -133,7 +133,7 @@ Clears `m_vecConfigList`, enumerates `GetDllDir()` for regular files with `.json
 |-------|-------|-------------|
 | Visual toggles | Yes | Yes |
 | Misc menu | Yes | Yes |
-| `Colors.Visual.SoundStepEsp` | Yes | **No** — footsteps use hardcoded yellow |
+| `Colors.Visual.SoundStepEsp` | Yes | **No** - footsteps use hardcoded yellow |
 
 Changing color in JSON alone will not affect footstep color until `CVisual::OnRenderSound` reads settings.
 
@@ -143,7 +143,7 @@ Changing color in JSON alone will not affect footstep color until `CVisual::OnRe
 
 - Renaming config files on disk requires **Refresh list** or restart
 - Old configs with only `ShowHeroId` still load hero name toggle correctly
-- ImGui `gui.ini` is independent — deleting it resets window layout only
+- ImGui `gui.ini` is independent - deleting it resets window layout only
 - Stamp file stores **filename only** (e.g. `my.json`), not full path
 
 ---
@@ -181,4 +181,4 @@ Helpers: `GetBoolJson`, `GetIntJson`, `GetColorJson`, `AddBoolJson`, etc.
 3. Add `RenderCheckBox` in appropriate menu tab
 4. Use variable in feature code
 
-No versioning field exists in JSON — forward compatibility is best-effort (unknown keys ignored on load).
+No versioning field exists in JSON - forward compatibility is best-effort (unknown keys ignored on load).
