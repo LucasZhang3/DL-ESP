@@ -19,18 +19,6 @@ The menu is **Dear ImGui** rendered with **Direct3D 11** on the game's swap chai
 ---
 
 ## Window layout
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  CHEAT_NAME (window title)                    [animated]│
-├──────────────┬──────────────────────────────────────────┤
-│ Configs      │  [ Config ] [ Visual ] [ Misc ]          │
-│  list        │                                          │
-│  (buttons)   │  (active tab content)                    │
-│              │                                          │
-└──────────────┴──────────────────────────────────────────┘
-```
-
 Constants (`CDeadlockMenu.hpp`):
 
 | Constant | Value | Meaning |
