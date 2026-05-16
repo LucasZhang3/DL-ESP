@@ -1,11 +1,10 @@
-# Deadlock — Project Documentation
+# Deadlock ESP
 
 > **Build output:** `Deadlock.dll` (Visual Studio solution `Deadlock.sln`, project `Deadlock/Deadlock.vcxproj`)  
-> **Display name (in-menu):** `vcme private` v`1.1.1` — see `Common/Include/Config.hpp`
+> **Display name (in-menu):** `vcme private` v`1.1.1` - see `Common/Include/Config.hpp`
 
-[Powered by Vermillion Hack](https://vermillion-hack.ru/)
 
-![Project banner](https://github.com/user-attachments/assets/1c432c57-8ee9-434f-96e8-7499a31add90)
+![Project banner](https://github.com/user-attachments/assets/4cc9b475-b3c9-4966-845e-17e2aa61f009)
 
 ---
 
@@ -37,7 +36,7 @@ At runtime it:
 - Presents an **ImGui** menu (toggle: **Insert**) over the game via DXGI / Steam overlay Present hook
 - Persists user settings as **JSON** files next to the DLL
 
-**Out of scope for this documentation:** injection method, anti-cheat, or distribution — only in-process behavior documented from source.
+**Out of scope for this documentation:** injection method, anti-cheat, or distribution - only in-process behavior documented from source.
 
 ---
 
@@ -217,7 +216,7 @@ Replace placeholders by adding images under `docs/images/` and linking them here
 | Schema offsets | **High** | `CSchemaOffset` + generated entity headers must match build |
 | `Offsets.hpp` constants | **High** | Hardcoded protobuf/layout offsets in `Hook_ParseMessage` |
 | `Hook_GetMatricesForView` | Low | Hook installed but only forwards to original |
-| `CDeadlockClient::OnCreateMove` | N/A | Stub — no aim/move features |
+| `CDeadlockClient::OnCreateMove` | N/A | Stub - no aim/move features |
 | `Settings::Colors::Visual::SoundStepEsp` | Medium | Saved/loaded but not applied in `CVisual::OnRenderSound` |
 | Hero ID table | Medium | Partial static table; unknown IDs show numeric fallback |
 | Overlay Present hook | Medium | Depends on Steam overlay DXGI path |
@@ -235,7 +234,7 @@ Replace placeholders by adding images under `docs/images/` and linking them here
 
 ---
 
-## 10. Quick reference — key singletons
+## 10. Quick reference - key singletons
 
 | Accessor | Type | Role |
 |----------|------|------|
