@@ -4,7 +4,7 @@
 > **Display name (in-menu):** `vcme private` v`1.1.1` - see `Common/Include/Config.hpp`
 
 
-![Project banner](https://github.com/user-attachments/assets/4cc9b475-b3c9-4966-845e-17e2aa61f009)
+![Project banner](https://github.com/user-attachments/assets/f9c2f649-f94e-4229-a23c-e24e994355e8)
 
 ---
 
