@@ -1,0 +1,31 @@
+#pragma once
+
+// Project Configuration:
+
+#define LOG_FILE					"debug.log"
+#define GUI_FILE					"gui.ini"
+#define CONFIG_FILE					"config.json"
+#define LAST_LOADED_CONFIG_STAMP_FILE		"last_loaded_config.txt"
+
+#define CHEAT_NAME					"vcme private"
+#define CHEAT_VERSION				"1.1.1"
+
+// Project Buid Config:
+
+#ifdef RELEASE_BUILD
+
+#define ENABLE_CONSOLE_DEBUG		1
+#define ENABLE_CPP_EH_EXCEPTION		0
+
+#define LOG_SDK						1
+#define LOG_SDK_PATTERN				0
+
+#define ENABLE_XOR_STR				0
+#define ENABLE_XOR_VMP_STR			0
+
+#define DUMP_SCHEMA_SCOPE_LIST		0
+#define DUMP_SCHEMA_ALL_OFFSET		0
+
+#define DISABLE_PROTOBUF			0
+
+#endif // RELEASE_BUILD
