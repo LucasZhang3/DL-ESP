@@ -267,8 +267,3 @@ Replace placeholders by adding images under `docs/images/` and linking them here
 | ![Footstep circles](https://github.com/user-attachments/assets/85b75e75-3e31-4220-81d9-18470de4cdf7) | Footstep circles |
 | ![Hero name labels](https://github.com/user-attachments/assets/f556572b-525f-41f3-a50e-f77112b12eab) | Hero name labels |
 | ![Health text and bar](https://github.com/user-attachments/assets/1ffaaf66-bf6d-4899-a4dc-460c4e25a766) | Health text and bar below ESP boxes |
-
-
-## License / attribution
-
-Third-party code in `Common/Include/` includes ImGui, MinHook, RapidJSON, FreeType, FW1FontWrapper, Steam API headers, and generated protobuf sources. Game assets and interfaces belong to Valve / respective rights holders.
