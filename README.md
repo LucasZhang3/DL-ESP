@@ -1,5 +1,7 @@
 # Deadlock ESP
 
+> **Disclaimer:** This project is for educational and research purposes. Using third-party software in online games may violate Terms of Service and result in bans. Use at your own risk.
+
 > **Build output:** `Deadlock.dll` (Visual Studio solution `Deadlock.sln`, project `Deadlock/Deadlock.vcxproj`)  
 > **Display name (in-menu):** `vcme private` v`1.1.1` - see `Common/Include/Config.hpp`
 
